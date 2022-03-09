@@ -3,10 +3,10 @@ library(tidyverse)
 library(lubridate)
 
 #02- import all the CSV Files into R
-calories_Per_hour <- read.csv("D:/Case Studies/track 2/Fitabase Data/DataSets/calories_Per_hour.csv")
-intensities_per_hour <- read.csv("D:/Case Studies/track 2/Fitabase Data/DataSets/intensities_per_hour.csv")
-Sleep_records <- read.csv("D:/Case Studies/track 2/Fitabase Data/DataSets/Sleep_records.csv")
-steps_per_hour <- read.csv("D:/Case Studies/track 2/Fitabase Data/DataSets/steps_per_hour.csv")
+calories_Per_hour <- read.csv(".../calories_Per_hour.csv")
+intensities_per_hour <- read.csv(".../intensities_per_hour.csv")
+Sleep_records <- read.csv(".../Sleep_records.csv")
+steps_per_hour <- read.csv(".../steps_per_hour.csv")
 
 
 
@@ -35,21 +35,14 @@ data_per_hour1 <- merge(calories_Per_hour, steps_per_hour)
 data_per_hour <- merge(data_per_hour1, intensities_per_hour)
 
 
-
 #05- add week_day to the files
 data_per_hour$day_of_week <- format(as.Date(data_per_hour$Day), "%A")
 Sleep_records$day_of_week <- format(as.Date(Sleep_records$Day), "%A")
 
 
-#07- Export the edited CSV files to be prepare for the visualization step
+#06- Export the edited CSV files to be prepare for the visualization step
 
-write.csv(data_per_hour, file ="D:/Case Studies/track 2/Fitabase Data/DataSets/Final Data sets/data_per_hour.csv")
-write.csv(Sleep_records, file ="D:/Case Studies/track 2/Fitabase Data/DataSets/Final Data sets/Sleep_records.csv")
-
-
-
-
-glimpse(Sleep_records) #will show average sleeping hours per day of week
-glimpse(data_per_hour) #will show relations between (calories & Steps) 
+write.csv(data_per_hour, file =".../data_per_hour.csv")
+write.csv(Sleep_records, file =".../Sleep_records.csv")
 
 
